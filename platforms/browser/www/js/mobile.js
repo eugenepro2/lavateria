@@ -10,58 +10,49 @@ var mainView = myApp.addView('.view-main', {
 
 });
 
-$$(document).on('pageInit', function (e) {
-  // Get page data from event data
-  var page = e.detail.page;
-  
-  if (page.name === 'about') {
-    // Following code will be executed for page with data-page attribute equal to "about"
-    myApp.alert('Here comes About page');
-  }
-})
 
 
-$$('.menu-open').on('click', function(){
-  	if (!$$('.view').is('[data-page=index]')) {
-	  	$$('.back').fadeToggle();
-	  }
-    $$(this).toggleClass('on');
-    $$('.mobile-menu').fadeToggle();
-  });
+	// $$('.menu-open').on('click', function(){
+ //  	if (!$$('.view').is('[data-page=index]')) {
+	//   	$$('.back').fadeToggle();
+	//   }
+ //    $$(this).toggleClass('on');
+ //    $$('.mobile-menu').fadeToggle();
+ //  });
 
-  $$('.mobile-menu a').on('click', function(){
+ //  $$('.mobile-menu a').on('click', function(){
 
-  	if($$(this).attr('href')) {      
-    	$$('.mobile-menu').fadeOut();
-  		$$('.menu-open').removeClass('on');
+ //  	if($$(this).attr('href')) {      
+ //    	$$('.mobile-menu').hide();
+ //  		$$('.menu-open').removeClass('on');
 
-  		if (!$$('.view').is('[data-page=index]')) {
-	  		$$('.back').fadeIn();
-	  	}
-		}
+ //  		if (!$$('.view').is('[data-page=index]')) {
+	//   		$$('.back').fadeIn();
+	//   	}
+	// 	}
 
-  });
+ //  });
 
-  $$('.mobile-city').on('click', function(){
-  	$$('.mobile-menu ul:first-child').addClass('hidden');
-  	$$('.mobile-menu__hidden').addClass('on');
-  });
+ //  $$('.mobile-city').on('click', function(){
+ //  	$$('.mobile-menu ul:first-child').addClass('hidden');
+ //  	$$('.mobile-menu__hidden').addClass('on');
+ //  });
 
-  $$('.mobile-menu__back').on('click', function(){
-  	$$('.mobile-menu ul:first-child').removeClass('hidden');
-  	$$('.mobile-menu__hidden').removeClass('on');
-  });
+ //  $$('.mobile-menu__back').on('click', function(){
+ //  	$$('.mobile-menu ul:first-child').removeClass('hidden');
+ //  	$$('.mobile-menu__hidden').removeClass('on');
+ //  });
 
 
-  if ($$('.view').is('[data-page=index]')) {
-  	$$('.back').hide();
-  }
+  // if ($$('.view').is('[data-page=index]')) {
+  // 	$$('.back').hide();
+  // }
 
-	$$(window).on('load', function () {
-		setTimeout(function(){
-			$$('#loading').delay(350).fadeOut('slow');
-		}, 3000);
-	});
+	// $$(window).on('load', function () {
+	// 	setTimeout(function(){
+	// 		$$('#loading').delay(350).fadeOut('slow');
+	// 	}, 3000);
+	// });
 
 
 myApp.onPageBeforeAnimation('*', function (page) {
