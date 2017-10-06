@@ -159,11 +159,11 @@ myApp.onPageBeforeAnimation('*', function (page) {
 
 
 		//Кнопка Назад
-		  if (page.name == 'index') {
-			  $$('.back').fadeOut();
-			} else{
-				$$('.back').fadeIn();
-			}
+		 //  if (page.name == 'index') {
+			//   $$('.back').fadeOut();
+			// } else{
+			// 	$$('.back').fadeIn();
+			// }
 
 			$$('.back').on('click', function(){
 				mainView.router.back;
