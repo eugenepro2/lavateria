@@ -170,7 +170,7 @@ myApp.onPageBeforeAnimation('*', function (page) {
 			})
 
 		//Маска для телефона
-			$$("#phone, #tel").mask("+9(999)999-99-99");
+			// $$("#phone, #tel").mask("+9(999)999-99-99");
 
 		//Показать скрыть пароль
 			$$(".checkbox input").change(function() {
