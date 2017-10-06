@@ -1,54 +1,3 @@
-$(function() {
-
-	//Открытие меню
-  $$('.menu-open').on('click', function(){
-  	if (!$('.view').is('[data-page=index]')) {
-	  	$('.back').fadeToggle();
-	  }
-    $(this).toggleClass('on');
-    $('.mobile-menu').fadeToggle();
-  });
-
-  $$('.mobile-menu a').on('click', function(){
-
-  	if($(this).attr('href')) {      
-    	$('.mobile-menu').fadeOut();
-  		$('.menu-open').removeClass('on');
-
-  		if (!$('.view').is('[data-page=index]')) {
-	  		$('.back').fadeIn();
-	  	}
-		}
-
-  });
-
-  $('.mobile-city').on('click', function(){
-  	$('.mobile-menu ul:first-child').addClass('hidden');
-  	$('.mobile-menu__hidden').addClass('on');
-  });
-
-  $('.mobile-menu__back').on('click', function(){
-  	$('.mobile-menu ul:first-child').removeClass('hidden');
-  	$('.mobile-menu__hidden').removeClass('on');
-  });
-
-
-  if ($('.view').is('[data-page=index]')) {
-  	$('.back').hide();
-  }
-
-	$(window).on('load', function () {
-		setTimeout(function(){
-			$('#loading').delay(350).fadeOut('slow');
-		}, 3000);
-	});
-
-
-
-
-
-
-});
 
 // Initialize app
 var myApp = new Framework7();
@@ -61,6 +10,60 @@ var mainView = myApp.addView('.view-main', {
 
 });
 
+$$(document).on('pageInit', function (e) {
+  // Get page data from event data
+  var page = e.detail.page;
+  
+  if (page.name === 'about') {
+    // Following code will be executed for page with data-page attribute equal to "about"
+    myApp.alert('Here comes About page');
+  }
+})
+
+
+$$('.menu-open').on('click', function(){
+  	if (!$$('.view').is('[data-page=index]')) {
+	  	$$('.back').fadeToggle();
+	  }
+    $$(this).toggleClass('on');
+    $$('.mobile-menu').fadeToggle();
+  });
+
+  $$('.mobile-menu a').on('click', function(){
+
+  	if($$(this).attr('href')) {      
+    	$$('.mobile-menu').fadeOut();
+  		$$('.menu-open').removeClass('on');
+
+  		if (!$$('.view').is('[data-page=index]')) {
+	  		$$('.back').fadeIn();
+	  	}
+		}
+
+  });
+
+  $$('.mobile-city').on('click', function(){
+  	$$('.mobile-menu ul:first-child').addClass('hidden');
+  	$$('.mobile-menu__hidden').addClass('on');
+  });
+
+  $$('.mobile-menu__back').on('click', function(){
+  	$$('.mobile-menu ul:first-child').removeClass('hidden');
+  	$$('.mobile-menu__hidden').removeClass('on');
+  });
+
+
+  if ($$('.view').is('[data-page=index]')) {
+  	$$('.back').hide();
+  }
+
+	$$(window).on('load', function () {
+		setTimeout(function(){
+			$$('#loading').delay(350).fadeOut('slow');
+		}, 3000);
+	});
+
+
 myApp.onPageBeforeAnimation('*', function (page) {
 
 		//Сброс
@@ -72,9 +75,9 @@ myApp.onPageBeforeAnimation('*', function (page) {
 		// });
 
 		$$('.more').on('click', function () {
-			$(this).siblings('.more-text').slideToggle();
-			var text = $(this).text();
-			$(this).text(
+			$$(this).siblings('.more-text').slideToggle();
+			var text = $$(this).text();
+			$$(this).text(
 				text == "Подробнее" ? "Скрыть" : "Подробнее");
 		});
 
@@ -97,49 +100,49 @@ myApp.onPageBeforeAnimation('*', function (page) {
 		});
 
 		//Профиль
-			$('.profile__block--order').each(function(){
-				if ($(this).is('.open')) {
-					$(this).find('.profile__block__row').show();
+			$$('.profile__block--order').each(function(){
+				if ($$(this).is('.open')) {
+					$$(this).find('.profile__block__row').show();
 				}else{
-					$(this).find('.profile__block__row').hide();
+					$$(this).find('.profile__block__row').hide();
 				}
 			});
 
-			$('.profile__block__link').on('click', function(){
-				$(this).closest('.profile__block').find('.profile__block__row').slideToggle();
-				$(this).closest('.profile__block').toggleClass('open');
+			$$('.profile__block__link').on('click', function(){
+				$$(this).closest('.profile__block').find('.profile__block__row').slideToggle();
+				$$(this).closest('.profile__block').toggleClass('open');
 			});
 
-			$('.profile__info__sub__name').each(function(){
-				var height = $(this).height();
-				$(this).closest('.row').find('.profile__info__sub__sum').height(height);
+			$$('.profile__info__sub__name').each(function(){
+				var height = $$(this).height();
+				$$(this).closest('.row').find('.profile__info__sub__sum').height(height);
 			});
 
-			$('.change-pass').on('click', function(){
-				$(this).closest('.profile__personal__block').find('.profile__personal__block__pass').slideToggle();
-				$(this).slideToggle();
+			$$('.change-pass').on('click', function(){
+				$$(this).closest('.profile__personal__block').find('.profile__personal__block__pass').slideToggle();
+				$$(this).slideToggle();
 			});
 
 			// $('.profile__personal__block__adress edit.').on('click', function(){
 			// 	$(this).slideToggle();
 			// 	$(this).closest('.profile__personal__block__adress').find('form').slideToggle();
 			// });
-			$('.profile__personal__block__adress__add .edit').on('click', function(){
-				var text = $(this).val();
-				$(this).val(
+			$$('.profile__personal__block__adress__add .edit').on('click', function(){
+				var text = $$(this).val();
+				$$(this).val(
 					text == "Редактировать" ? "Сохранить" : "Редактировать");
-				$(this).closest('.profile__personal__block__adress__add').find('div').slideToggle();
+				$$(this).closest('.profile__personal__block__adress__add').find('div').slideToggle();
 			});
-			$('.profile__personal__block__adress__add .add').on('click', function(){
-				var text = $(this).val();
-				$(this).val(
+			$$('.profile__personal__block__adress__add .add').on('click', function(){
+				var text = $$(this).val();
+				$$(this).val(
 					text == "Добавить адрес" ? "Сохранить адрес" : "Добавить адрес");
-				$(this).closest('.profile__personal__block__adress__add').find('div').slideToggle();
+				$$(this).closest('.profile__personal__block__adress__add').find('div').slideToggle();
 			});
 
 			//- Two groups
 			$$('.profile-contact').on('click', function () {
-				$('.modal-button').text('Отмена');
+				$$('.modal-button').text('Отмена');
 			    var buttons1 = [
 			        {
 			            text: 'Обратная связь',
@@ -166,114 +169,114 @@ myApp.onPageBeforeAnimation('*', function (page) {
 
 		//Кнопка Назад
 		  if (page.name == 'index') {
-			  $('.back').fadeOut();
+			  $$('.back').fadeOut();
 			} else{
-				$('.back').fadeIn();
+				$$('.back').fadeIn();
 			}
 
-			$('.back').on('click', function(){
+			$$('.back').on('click', function(){
 				mainView.router.back;
 			})
 
 		//Маска для телефона
-			$("#phone, #tel").mask("+9(999)999-99-99");
+			$$("#phone, #tel").mask("+9(999)999-99-99");
 
 		//Показать скрыть пароль
-			$(".checkbox input").change(function() {
-					if ($(this).is(':checked')) {
-						$('#password').attr('type', 'text');
+			$$(".checkbox input").change(function() {
+					if ($$(this).is(':checked')) {
+						$$('#password').attr('type', 'text');
 					} else{
-						$('#password').attr('type', 'password');
+						$$('#password').attr('type', 'password');
 					}
 			});
 
 		//Оформление заказа
-			$('.checkout__step--1 .checkout__step__block').hide();
-			$('.checkout__step--3 .checkout__step__block').hide();
-			$('.checkout__step--4 .checkout__step__block').hide();
-			$('.checkout__item').on('click', function(){
-				var step = $(this).closest('.checkout__step').toggleClass('hidden');
-				var stepBLock = $(this).closest('.checkout__step').find('.checkout__step__block').slideToggle();  			
+			$$('.checkout__step--1 .checkout__step__block').hide();
+			$$('.checkout__step--3 .checkout__step__block').hide();
+			$$('.checkout__step--4 .checkout__step__block').hide();
+			$$('.checkout__item').on('click', function(){
+				var step = $$(this).closest('.checkout__step').toggleClass('hidden');
+				var stepBLock = $$(this).closest('.checkout__step').find('.checkout__step__block').slideToggle();  			
 			});
 
-			$('.save').on('click', function(){
-				var crr = $(this).closest('.checkout__step');
+			$$('.save').on('click', function(){
+				var crr = $$(this).closest('.checkout__step');
 				crr.addClass('hidden');
 				crr.find('.checkout__step__block').slideUp();
 				crr.next('.checkout__step').removeClass('hidden');
 				crr.next('.checkout__step').find('.checkout__step__block').slideDown();
 			});
 
-			$('.next').on('click', function(event){
-				var crr = $(this).closest('.checkout__step');
+			$$('.next').on('click', function(event){
+				var crr = $$(this).closest('.checkout__step');
 				crr.addClass('hidden');
 				crr.find('.checkout__step__block').slideUp();
 				crr.next('.checkout__step').removeClass('hidden');
 				crr.next('.checkout__step').find('.checkout__step__block').slideDown();
 				event.preventDefault();
-	      var id  = $(this).attr('href'),
-	          top = $(id).offset().top - 600;
+	      var id  = $$(this).attr('href'),
+	          top = $$(id).offset().top - 600;
 	       setTimeout(function(){
-	       		 $('.page-content').animate({scrollTop: top}, 1500);
+	       		 $$('.page-content').animate({scrollTop: top}, 1500);
 	       }, 500);
 			});
-			$('.checkout__ready__name').each(function(){
-				var height = $(this).height();
-				$(this).closest('.row').find('.checkout__ready__count').height(height);
-				$(this).closest('.row').find('.checkout__ready__sum').height(height);
+			$$('.checkout__ready__name').each(function(){
+				var height = $$(this).height();
+				$$(this).closest('.row').find('.checkout__ready__count').height(height);
+				$$(this).closest('.row').find('.checkout__ready__sum').height(height);
 			});
 
-			$('input, textarea').focus(function(){
-				$(this).closest('.checkout__step').find('.checkout__item').addClass('active');
+			$$('input, textarea').focus(function(){
+				$$(this).closest('.checkout__step').find('.checkout__item').addClass('active');
 			});
-			$('input, textarea').blur(function() {
-		    if($("#adress").val() && $("#date").val()){
-		    	$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
-		    } else if($("#name").val() && $("#tel").val()){
-		    		$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
-		        $(this).closest('.checkout__step').find('.checkout__item').addClass('active');
+			$$('input, textarea').blur(function() {
+		    if($$("#adress").val() && $$("#date").val()){
+		    	$$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
+		    } else if($$("#name").val() && $$("#tel").val()){
+		    		$$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
+		        $$(this).closest('.checkout__step').find('.checkout__item').addClass('active');
 		    } else {
-		        $(this).closest('.checkout__step').find('.checkout__item').removeClass('active');
+		        $$(this).closest('.checkout__step').find('.checkout__item').removeClass('active');
 		    }
 			});
-			$('input').change(function(){
-				if($("#adress").val() && $("#date").val()){
-					$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
-		    } else if($("#name").val() && $("#tel").val()){
-		    		$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
-		        $(this).closest('.checkout__step').find('.checkout__item').addClass('active-line');
+			$$('input').change(function(){
+				if($$("#adress").val() && $$("#date").val()){
+					$$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
+		    } else if($$("#name").val() && $$("#tel").val()){
+		    		$$(this).closest('.checkout__step').find('.next').css('pointer-events', 'inherit')
+		        $$(this).closest('.checkout__step').find('.checkout__item').addClass('active-line');
 		    } else {
-		        $(this).closest('.checkout__step').find('.checkout__item').removeClass('active-line');
+		        $$(this).closest('.checkout__step').find('.checkout__item').removeClass('active-line');
 		    }
 			})
-			$(".checkout__step__payment input").change(function() {
-					if ($(this).is(':checked')) {
-						$(this).closest('.checkout__step').find('.checkout__item').addClass('active');
+			$$(".checkout__step__payment input").change(function() {
+					if ($$(this).is(':checked')) {
+						$$(this).closest('.checkout__step').find('.checkout__item').addClass('active');
 					} else{
-						$(this).closest('.checkout__step').find('.checkout__item').removeClass('active');
+						$$(this).closest('.checkout__step').find('.checkout__item').removeClass('active');
 					}
 			});
-			$('#date').focus(function(){
-				$(this).css('border', '1px solid #01b3fd')
+			$$('#date').focus(function(){
+				$$(this).css('border', '1px solid #01b3fd')
 			});
 
-			$('select').on('click', function(){
-				$(this).closest('.item-input').addClass('active')
+			$$('select').on('click', function(){
+				$$(this).closest('.item-input').addClass('active')
 			});
 
 
 
 
 		//Svg Inline
-			jQuery('img.svg').each(function(){
-				var $img = jQuery(this);
+			$$('img.svg').each(function(){
+				var $img = $$(this);
 				var imgID = $img.attr('id');
 				var imgClass = $img.attr('class');
 				var imgURL = $img.attr('src');
 
-				jQuery.get(imgURL, function(data) {
+				$$.get(imgURL, function(data) {
 						// Get the SVG tag, ignore the rest
-						var $svg = jQuery(data).find('svg');
+						var $svg = $$(data).find('svg');
 
 						// Add replaced image's ID to the new SVG
 						if(typeof imgID !== 'undefined') {
@@ -303,28 +306,28 @@ myApp.onPageBeforeAnimation('*', function (page) {
 
 			//Калькулятор
 				//Добавить
-				$('[data-action=add]').on('click', function(e){
+				$$('[data-action=add]').on('click', function(e){
 					var newValue = getNewValue(e);
-					setNewValue($(this), newValue);
+					setNewValue($$(this), newValue);
 				});
 				//Уменьшить
-				$('[data-action=substract]').on('click', function(e){
+				$$('[data-action=substract]').on('click', function(e){
 					var newValue = getNewValue(e);
-					setNewValue($(this), newValue);
+					setNewValue($$(this), newValue);
 				});
 				//Ввод числа в инпут
-				$('[data-action=keyup]').keyup(function(e){
+				$$('[data-action=keyup]').keyup(function(e){
 					var newValue = getNewValue(e);
-					setNewValue($(this), newValue);
+					setNewValue($$(this), newValue);
 				});
 				//Обнулить
-				$('.offer__cart__reset').on('click', function(e){
+				$$('.offer__cart__reset').on('click', function(e){
 					reset();
 				});
 
 
-				$(".checkbox input").change(function() {
-					getSumWithDelivery($(this));
+				$$(".checkbox input").change(function() {
+					getSumWithDelivery($$(this));
 				});
 
 
@@ -352,14 +355,14 @@ myApp.onPageBeforeAnimation('*', function (page) {
 					//Калькулятор(Функции)
 						//Находим текущее значение
 						function findOldValue(e) {
-							var crr = $('*[data-price="'+ findPrice($(e)) +'"]');
-							// $(e).closest('.calc').find("input").val(oldValue);
+							var crr = $$('*[data-price="'+ findPrice($$(e)) +'"]');
+							// $$(e).closest('.calc').find("input").val(oldValue);
 
-							return parseInt($(e).closest('.calc').find("input").val());
+							return parseInt($$(e).closest('.calc').find("input").val());
 						}
 						//Находим цену
 						function findPrice(e){
-							return $(e).closest('.calc').find("input").data('price');
+							return $$(e).closest('.calc').find("input").data('price');
 						}
 						//Валидация числа
 						function validateNegativeNumbers(n){
@@ -386,9 +389,9 @@ myApp.onPageBeforeAnimation('*', function (page) {
 						//Получаем новое значение
 						function getNewValue(e){
 							var oldValue = findOldValue(e.currentTarget);
-							var action = $(e.currentTarget).data("action");
-							$('.offer__cart').fadeIn();
-							$('.offer__block__free').fadeIn();
+							var action = $$(e.currentTarget).data("action");
+							$$('.offer__cart').fadeIn();
+							$$('.offer__block__free').fadeIn();
 							var newValue = ACTIONS[action](oldValue);
 									newValue = validateNegativeNumbers(newValue);
 
@@ -396,9 +399,9 @@ myApp.onPageBeforeAnimation('*', function (page) {
 						}
 						//Записываем новое значение
 						function setNewValue(e, newValue){
-							$(e).closest('.calc').find("input").val(newValue);
-							var thisPrice = $('*[data-price="'+ findPrice($(e)) +'"]');
-							var sum = findPrice($(e));
+							$$(e).closest('.calc').find("input").val(newValue);
+							var thisPrice = $$('*[data-price="'+ findPrice($$(e)) +'"]');
+							var sum = findPrice($$(e));
 							thisPrice.find('.cart__count span').text(newValue);
 							thisPrice.find('.cart__sum span').text(sum * newValue);
 							validateActive(newValue, thisPrice);
@@ -408,7 +411,7 @@ myApp.onPageBeforeAnimation('*', function (page) {
 						var sumWithDeliveryPrice = 0;
 						var sumWithDeliveryPriceFree = 0;
 						function getSumWithDelivery(e) {
-							var delivery = $('.cart-delivery')
+							var delivery = $$('.cart-delivery')
 							var price = e.data('deliveryPrice');
 							var priceFree = e.data('deliveryPriceFree');
 							var textCheckout = e.siblings('.label-checkout').text();
@@ -416,9 +419,9 @@ myApp.onPageBeforeAnimation('*', function (page) {
 							if (e.is(":checked")) {
 								delivery.find('.cart-delivery-sum').text(price);
 								delivery.find('.cart-delivery-sum-free span').text(priceFree);
-								$('.delivery').text(textCheckout);
+								$$('.delivery').text(textCheckout);
 							} else{
-								$('.delivery').text("Самовывоз");
+								$$('.delivery').text("Самовывоз");
 							}
 
 							sumWithDeliveryPrice = price;
@@ -430,8 +433,8 @@ myApp.onPageBeforeAnimation('*', function (page) {
 						//Получаем сумму
 						var totalSum = 0;
 						function getSum(){
-							var a = $('.cart__sum--1 span').text();
-							var b = $('.cart__sum--2 span').text();
+							var a = $$('.cart__sum--1 span').text();
+							var b = $$('.cart__sum--2 span').text();
 							totalSum = +a + +b;
 							freeDelivery();
 						}
@@ -440,30 +443,30 @@ myApp.onPageBeforeAnimation('*', function (page) {
 						//Бесплатная доставка
 						function freeDelivery() {
 							if (totalSum >= sumWithDeliveryPriceFree && sumWithDeliveryPriceFree > 1) {
-								$('.total span').text(totalSum);
+								$$('.total span').text(totalSum);
 							} else{
-								$('.total span').text(totalSum + sumWithDeliveryPrice);
+								$$('.total span').text(totalSum + sumWithDeliveryPrice);
 							}
 						}
 						//Обнулить
 						function reset(){
-							// $('.offer__cart').fadeOut();	
-							// $('.offer__block__free').fadeOut();
-							// $('.offer__block__calc input').val(0);
-							// $('.offer__cart__count span').text(0);
-							// $('.offer__cart__sum span').text(0);
-							// $('.active').addClass('no-active');
-							// $('.checkbox input:checked').prop('checked', false);
-							// $('#cart-delivery-sum').text(0);
-							// $('#cart-delivery-sum-free').text('');
+							// $$('.offer__cart').fadeOut();	
+							// $$('.offer__block__free').fadeOut();
+							// $$('.offer__block__calc input').val(0);
+							// $$('.offer__cart__count span').text(0);
+							// $$('.offer__cart__sum span').text(0);
+							// $$('.active').addClass('no-active');
+							// $$('.checkbox input:checked').prop('checked', false);
+							// $$('#cart-delivery-sum').text(0);
+							// $$('#cart-delivery-sum-free').text('');
 
 							window.location.reload();
 						}
 
 					//Калькулятор абонементы(Функция)
 						function calculateAbonement(e) {
-							var firstSelect = $('.select-first');
-							var secondSelect = $('.select-second');
+							var firstSelect = $$('.select-first');
+							var secondSelect = $$('.select-second');
 							var first = firstSelect.find('option:selected');
 							var second = secondSelect.find('option:selected');
 							var valMonth = second.data('valueMonth');
